@@ -407,7 +407,6 @@ body {
   z-index: 20;
 }
 .Navbar {
-  visibility: visible;
   position: fixed;
   top: 0;
   left: 0;
@@ -424,21 +423,25 @@ body {
   margin: 0;
   margin: 0 2em;
   cursor: pointer;
+  font-size: 1.2em;
+  font-weight: bold;
+  background: none;
+  color: white;
+  border: none;
 }
 .Navbar input{
   border: none;
   height: 2em;
   width: 30em;
-  /* cursor:; */
 }
-/* .Navbar:hover{
+.Navbar:hover{
   visibility: visible;
   transform: translateY(0);
 }
 .navbarTrigger:hover + .Navbar {
   visibility: visible;
   transform: translateY(0);
-} */
+}
 .searchCards{
   /* margin-top: 20vh; */
   display: flex;
@@ -472,4 +475,22 @@ body {
 .searchCards {
   position: relative;
   z-index: 1;
+}
+.Loading {
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  min-height: 100vh;
+}
+.Loading .Grainient {
+  position: fixed;
+  inset: 0;
+  z-index: 0;
+  pointer-events: none;
+}
+.Loading .size-14{
+  z-index: 1;
+  filter: invert();
 }

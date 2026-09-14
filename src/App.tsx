@@ -1,7 +1,7 @@
 import { useState, useEffect } from 'react'
 import { Routes, Route } from 'react-router-dom';
 import Navbar from './components/Navbar.js';
-// import SearchPage from './components/SearchPage.js';
+import LoadingScreen from './components/Loading'
 import Page from './components/Page.js'
 import Header from './components/Header.js'
 import MoviePage from './components/MoviePage.js'
@@ -59,6 +59,9 @@ function searchMovie(c: string){
   setSearch(c)
 }
 
+if (movies.length === 0 || moviesTop.length === 0) {
+  return <LoadingScreen />;
+}
 
 return (
   <>
