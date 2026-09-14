@@ -5,7 +5,7 @@ import path from 'path'
 
 export default defineConfig({
   plugins: [react(), tailwindcss()],
-  base: '/Movie-App-React/',
+  base: '/Movie-App-React',
   resolve: {
     alias: {
       '@': path.resolve(import.meta.dirname, './src'),

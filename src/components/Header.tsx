@@ -58,10 +58,12 @@ export default function Header({
 
   return (
     <div className="headerDiv">
+      <div className='coverContainer'>
       <img
   className={selectedMovie !== null ? "selected" : ""}
   src={`https://image.tmdb.org/t/p/w500${currentMovie.poster_path}`}
 />
+</div>
 
       <div className={`headerDesc ${selectedMovie !== null ? "selected" : ""}`}>
   <h1>{currentMovie.title}</h1>

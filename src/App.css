@@ -8,8 +8,14 @@ body {
   min-height: 100vh;
   background-image: linear-gradient(to right, #d7d2cc 0%, #304352 100%);
   overflow-x: hidden;
+  margin: 0;
 }
-
+.Grainient {
+  pointer-events: none;
+}
+.movieApp > canvas {
+  pointer-events: none;
+}
 .movieSection {
   position: relative;
   background-color: hsla(0, 0%, 0%, 0.445);
@@ -103,7 +109,7 @@ body {
   width: auto;
 }
 
-.headerDiv img:last-child {
+.headerDiv > img:last-child {
   mask-image:
     linear-gradient(to right, transparent 0%, black 5%, black 100%),
     linear-gradient(to top, transparent 0%, black 5%, black 100%);
@@ -111,11 +117,15 @@ body {
 }
 
 .headerDiv img:first-child {
-  margin: 1em 0 0 1em;
-  width: 16vw;
   height: 50vh;
 
   box-shadow: rgba(0, 0, 0, 0.3) 0px 19px 38px, rgba(0, 0, 0, 0.22) 0px 15px 12px;
+}
+.coverContainer{
+  display: flex;
+  width: 20vw;
+  align-items: center;
+  justify-content: center;
 }
 
 .headerDesc {
@@ -249,14 +259,12 @@ body {
   height: 3px;
   background: rgba(255, 255, 255, 0.3);
   margin-top: 15px;
-  border-radius: 50%;
 }
 
 .headerTimerProgress {
   height: 100%;
   background: white;
   animation: headerProgress 8s linear infinite;
-  border-radius: 50%;
 }
 
 @keyframes headerProgress {
@@ -387,6 +395,81 @@ body {
 }
 
 .movieContent {
+  position: relative;
+  z-index: 1;
+}
+.navbarTrigger {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 7vh;
+  z-index: 20;
+}
+.Navbar {
+  visibility: visible;
+  position: fixed;
+  top: 0;
+  left: 0;
+  background-color: rgba(0, 0, 0, 0.911);
+  height: 7vh;
+  width: 100%;
+  z-index: 100;
+  color: white;
+  display: flex;
+  font-size: 1em;
+  align-items: center;
+}
+.Navbar button{
+  margin: 0;
+  margin: 0 2em;
+  cursor: pointer;
+}
+.Navbar input{
+  border: none;
+  height: 2em;
+  width: 30em;
+  /* cursor:; */
+}
+/* .Navbar:hover{
+  visibility: visible;
+  transform: translateY(0);
+}
+.navbarTrigger:hover + .Navbar {
+  visibility: visible;
+  transform: translateY(0);
+} */
+.searchCards{
+  /* margin-top: 20vh; */
+  display: flex;
+  flex-wrap: wrap;
+  padding: 0 1em;
+  margin-bottom: 1em;
+  min-height: 23em;
+  align-items: center;
+  gap: 20px;
+  overflow-x: hidden;
+  scroll-behavior: smooth;
+  mask-image:
+    linear-gradient(to right, transparent 0%, black 10%, black 100%),
+    linear-gradient(to left, transparent 0%, black 10%, black 100%);
+  mask-composite: intersect;
+
+}
+
+.searchPage {
+  position: relative;
+  min-height: 100vh;
+}
+
+.searchPage .Grainient {
+  position: fixed;
+  inset: 0;
+  z-index: 0;
+  pointer-events: none;
+}
+
+.searchCards {
   position: relative;
   z-index: 1;
 }

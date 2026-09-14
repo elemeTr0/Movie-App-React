@@ -1,10 +1,13 @@
 import { useState, useEffect } from 'react'
 import { Routes, Route } from 'react-router-dom';
+import Navbar from './components/Navbar.js';
+// import SearchPage from './components/SearchPage.js';
 import Page from './components/Page.js'
 import Header from './components/Header.js'
 import MoviePage from './components/MoviePage.js'
 import Grainient from "./components/Grainient.jsx";
 import './App.css'
+import SearchPage from './components/SearchPage.js';
 
 interface Movie {
   id: number;
@@ -46,55 +49,80 @@ function selectMovie(movieId: number) {
 }
 
 const [moviePage, setMoviePage] = useState<Movie | null>(null);
-
+const allMovies = [...movies, ...moviesTop];
 function aaa(movie: Movie) {
   setMoviePage(movie);
 }
 
-  return (
-  <Routes>
-    <Route
-      path="/"
-      element={
-        <div className="movieApp">
-          <Grainient />
+const [search, setSearch] = useState("")
+function searchMovie(c: string){
+  setSearch(c)
+}
 
-          <div className="movieContent">
-            <Header
-              movies={movies}
-              moviesTop={moviesTop}
-              selectedMovie={active}
-              returnMovie={aaa}
-            />
 
-            <Page
-              movies={movies}
-              selectMovie={selectMovie}
-              title="Popular"
-            />
+return (
+  <>
+    <Navbar searchMovie={searchMovie} />
 
-            <Page
-              movies={moviesTop}
-              selectMovie={selectMovie}
-              title="Top Rated"
-            />
+    <Routes>
+      <Route
+        path="/"
+        element={
+          <div className="movieApp">
+            <div className="Grainient">
+              <Grainient />
+            </div>
+
+            <div className="navbarTrigger"></div>
+
+            <div className="movieContent">
+              <Header
+                movies={movies}
+                moviesTop={moviesTop}
+                selectedMovie={active}
+                returnMovie={aaa}
+              />
+
+              <Page
+                movies={movies}
+                selectMovie={selectMovie}
+                title="Popular"
+              />
+
+              <Page
+                movies={moviesTop}
+                selectMovie={selectMovie}
+                title="Top Rated"
+              />
+            </div>
           </div>
-        </div>
-      }
-    />
+        }
+      />
 
-    <Route
-      path="/movie/:movieName"
-      element={
-        moviePage ? (
-          <MoviePage movie={moviePage} />
-        ) : (
-          <div>Loading...</div>
-        )
-      }
-    />
-  </Routes>
+      <Route
+        path="/search"
+        element={
+          <SearchPage
+            allMovies={allMovies}
+            search={search}
+          />
+        }
+      />
+
+      <Route
+        path="/movie/:movieName"
+        element={
+          moviePage ? (
+            <MoviePage movie={moviePage} />
+          ) : (
+            <div>Loading...</div>
+          )
+        }
+      />
+    </Routes>
+  </>
 );
 }
+
 
 export default App
