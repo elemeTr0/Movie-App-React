@@ -1,28 +1,24 @@
-@import "tailwindcss";
+@import "tailwindcss/theme.css";
+@import "tailwindcss/utilities.css";
 @import "tw-animate-css";
 @import "shadcn/tailwind.css";
 @import "@fontsource-variable/geist";
 
 @custom-variant dark (&:is(.dark *));
 
-body{
-  box-sizing: border-box;
-  margin: 0;
-  max-width: 100vw;
+body {
   min-height: 100vh;
-  font-family: Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
-background-image: linear-gradient(to right, #d7d2cc 0%, #304352 100%);
-overflow-x: hidden;
+  background-image: linear-gradient(to right, #d7d2cc 0%, #304352 100%);
+  overflow-x: hidden;
 }
 
 .movieSection {
   position: relative;
-    background-color: hsla(0, 0%, 0%, 0.445);
-    padding: 1em 0;
-
+  background-color: hsla(0, 0%, 0%, 0.445);
+  padding: 1em 0;
 }
 
-.Card{
+.Card {
   border: 1px solid hsla(0, 0%, 54%, 0.26);
   width: 15em;
   height: 20em;
@@ -37,11 +33,11 @@ overflow-x: hidden;
   background-repeat: no-repeat;
 }
 
-.Card:hover{
+.Card:hover {
   transform: scale(1.03);
 }
 
-.Card h2, .Card span, .Card p{
+.Card h2, .Card span, .Card p {
   margin: 0;
   margin-left: 1em;
   margin-bottom: 0.5em;
@@ -49,41 +45,40 @@ overflow-x: hidden;
   font-size: 1rem;
 }
 
-.showCards{
+.showCards {
   display: flex;
   padding: 0 1em;
   margin-bottom: 1em;
   min-height: 23em;
   align-items: center;
   gap: 20px;
-  overflow-x: hidden  ;
+  overflow-x: hidden;
   scroll-behavior: smooth;
   mask-image:
-  linear-gradient(to right, transparent 0%, black 10%, black 100%),   
-  linear-gradient(to left, transparent 0%, black 10%, black 100%);
+    linear-gradient(to right, transparent 0%, black 10%, black 100%),
+    linear-gradient(to left, transparent 0%, black 10%, black 100%);
   mask-composite: intersect;
 }
 
-.showCards > *{
+.showCards > * {
   flex-shrink: 0;
-
 }
 
-.sideButton{
+.sideButton {
   position: absolute;
   top: 50%;
+  transform: translateY(-50%);
   background-color: aliceblue;
   border-radius: 50%;
   border: none;
   width: 2em;
   height: 2em;
-  transition: background-color 0.2s ease;
-  transition: transform 0.2s ease;
+  transition: background-color 0.2s ease, transform 0.2s ease;
   z-index: 1000;
 }
 
-.sideButton:hover{
-  transform: scale(1.3);
+.sideButton:hover {
+  transform: translateY(-50%) scale(1.3);
   cursor: pointer;
   background-color: black;
   color: aliceblue;
@@ -111,18 +106,22 @@ overflow-x: hidden;
   width: auto;
   display: block;
 }
-.headerDiv img:last-child{
-    mask-image:
-  linear-gradient(to right, transparent 0%, black 5%, black 100%),   
-  linear-gradient(to top, transparent 0%, black 5%, black 100%);
 
+.headerDiv img:last-child {
+  mask-image:
+    linear-gradient(to right, transparent 0%, black 5%, black 100%),
+    linear-gradient(to top, transparent 0%, black 5%, black 100%);
   mask-composite: intersect;
 }
-.headerDiv img:first-child{
-margin: 1em 0 0 1em;
-  height: 28em;
-  width: auto;
-box-shadow: rgba(0, 0, 0, 0.3) 0px 19px 38px, rgba(0, 0, 0, 0.22) 0px 15px 12px;}
+
+.headerDiv img:first-child {
+  margin: 1em 0 0 1em;
+  width: 20vw;
+  height: auto;
+
+  box-shadow: rgba(0, 0, 0, 0.3) 0px 19px 38px, rgba(0, 0, 0, 0.22) 0px 15px 12px;
+}
+
 .headerDesc {
   padding: 2em;
   max-width: 30vw;
@@ -139,40 +138,39 @@ box-shadow: rgba(0, 0, 0, 0.3) 0px 19px 38px, rgba(0, 0, 0, 0.22) 0px 15px 12px;
 .headerDesc p {
   line-height: 1.5;
   min-height: 3em;
-
   display: -webkit-box;
   -webkit-box-orient: vertical;
   -webkit-line-clamp: 2;
   line-clamp: 2;
   overflow: hidden;
 }
-#title{
+
+#title {
   color: white;
   margin: 0;
   padding: 0;
   margin-left: 1em;
 }
+
 #play {
   width: 10em;
   font-weight: bold;
   height: 3em;
   border-radius: 10px;
   color: black;
-
   margin-top: 2em;
-
-  transition: background-color 0.5s ease;
-  transition: transform 0.2s ease;
-
+  transition: background-color 0.5s ease, transform 0.2s ease;
   background-color: hsla(0, 0%, 100%, 0.815);
   border: none;
   position: relative;
 }
-#play:hover{
+
+#play:hover {
   background-color: hsl(0, 0%, 100%);
   transform: scale(1.1);
   cursor: pointer;
 }
+
 .MoviePage {
   position: relative;
   width: 100vw;
@@ -180,17 +178,17 @@ box-shadow: rgba(0, 0, 0, 0.3) 0px 19px 38px, rgba(0, 0, 0, 0.22) 0px 15px 12px;
   color: white;
   overflow: hidden;
 }
-.MoviePage h1{
+
+.MoviePage h1 {
   margin: 0;
 }
+
 .movieBackground {
   position: absolute;
   inset: 0;
-
   background-repeat: no-repeat;
   background-size: cover;
   background-position: center;
-
   filter: blur(5px);
   transform: scale(1.05);
 }
@@ -204,24 +202,21 @@ box-shadow: rgba(0, 0, 0, 0.3) 0px 19px 38px, rgba(0, 0, 0, 0.22) 0px 15px 12px;
   border-radius: 10px;
   padding: 1em;
 }
+
 #StartMovie {
   background-color: rgb(156, 156, 156);
   border: none;
   border-radius: 50%;
   cursor: pointer;
-
   width: 100px;
   height: 100px;
-
   position: absolute;
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
-
   font-size: 40px;
   line-height: 100px;
   padding: 0;
-
   z-index: 1;
 }
 
@@ -231,33 +226,28 @@ box-shadow: rgba(0, 0, 0, 0.3) 0px 19px 38px, rgba(0, 0, 0, 0.22) 0px 15px 12px;
   border: none;
   cursor: pointer;
   color: white;
-
   width: 100px;
   height: 40px;
-
   position: absolute;
   bottom: 1em;
   left: 3em;
-
   padding: 0;
   font-size: 15px;
   font-weight: bold;
-
   display: flex;
   align-items: center;
   justify-content: center;
-  transition: background-color 0.5s ease;
-  transition: transform 0.5s ease;
-
+  transition: background-color 0.5s ease, transform 0.5s ease;
   z-index: 1;
 }
 
-#Back:hover{
+#Back:hover {
   background-color: hsl(0, 0%, 100%);
   color: black;
   transform: scale(1.2);
   cursor: pointer;
 }
+
 .headerTimer {
   width: 10em;
   height: 3px;
@@ -277,7 +267,6 @@ box-shadow: rgba(0, 0, 0, 0.3) 0px 19px 38px, rgba(0, 0, 0, 0.22) 0px 15px 12px;
   from {
     width: 0%;
   }
-
   to {
     width: 100%;
   }
@@ -287,21 +276,22 @@ box-shadow: rgba(0, 0, 0, 0.3) 0px 19px 38px, rgba(0, 0, 0, 0.22) 0px 15px 12px;
 .headerDiv img:not(.selected) {
   animation: opacityChange 8s linear infinite;
 }
+
 @keyframes opacityChange {
   0% {
-    opacity: 0%;
+    opacity: 0;
   }
-  5%{
-    opacity: 0%;
+  5% {
+    opacity: 0;
   }
   20% {
-    opacity: 100%;
+    opacity: 1;
   }
-  80%{
-    opacity: 100%;
+  80% {
+    opacity: 1;
   }
-  100%{
-    opacity: 0%;
+  100% {
+    opacity: 0;
   }
 }
 
@@ -428,6 +418,7 @@ box-shadow: rgba(0, 0, 0, 0.3) 0px 19px 38px, rgba(0, 0, 0, 0.22) 0px 15px 12px;
     @apply font-sans;
   }
 }
+
 .movieApp {
   position: relative;
   min-height: 100vh;

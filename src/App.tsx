@@ -1,8 +1,8 @@
 import { useState, useEffect } from 'react'
 import { Routes, Route } from 'react-router-dom';
-import Page from './Page'
-import Header from './Header'
-import MoviePage from './MoviePage'
+import Page from './components/Page.js'
+import Header from './components/Header.js'
+import MoviePage from './components/MoviePage.js'
 import Grainient from "./components/Grainient.jsx";
 import './App.css'
 
