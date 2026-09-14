@@ -16,13 +16,15 @@ interface HeaderProps {
   moviesTop: Movie[];
   selectedMovie: number | null;
   returnMovie: (movie:Movie) => void
+  changeSource: (k:boolean) => void
 }
 
 export default function Header({
   movies,
   moviesTop,
   selectedMovie,
-  returnMovie
+  returnMovie,
+  changeSource
 }: HeaderProps) {
 
   const [active, setActive] = useState(0);
@@ -73,6 +75,7 @@ export default function Header({
   <WatchNow
     movie={currentMovie}
     returnMovie={returnMovie}
+    changeSource={changeSource}
   />
 
   {selectedMovie === null && (
@@ -93,14 +96,17 @@ export default function Header({
 
 function WatchNow({
   movie,
-  returnMovie
+  returnMovie,
+  changeSource
 }: {
   movie: Movie;
   returnMovie: (movie: Movie) => void;
+  changeSource: (k:boolean) => void
 }) {
   const navigate = useNavigate();
 
   function handleClick() {
+    changeSource(false)
     returnMovie(movie);
     navigate(`/movie/${movie.title}`);
   }

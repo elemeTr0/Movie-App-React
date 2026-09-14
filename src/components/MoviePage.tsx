@@ -11,15 +11,18 @@ interface Movie {
 }
 interface MoviePageProps {
   movie: Movie;
+  source: boolean
 }
 
-export default function MoviePage({ movie }: MoviePageProps) {
+export default function MoviePage({ movie, source }: MoviePageProps) {
     const year = movie.release_date.split('-');
 
     const navigate = useNavigate();
 
     function handleClick() {
-    navigate(`/`);
+      if(source)
+    navigate(`/search`);
+  else navigate(`/`);
   }
   return (
     <div className="MoviePage">

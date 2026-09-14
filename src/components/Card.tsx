@@ -10,21 +10,17 @@ interface Movie {
 
 interface CardProps {
   movie: Movie;
-  selectMovie?: (id: number) => void | undefined;
+  onClick: (movie: Movie) => void;
 }
 
-export default function Card({ movie, selectMovie }: CardProps) {
+export default function Card({ movie, onClick }: CardProps) {
 
-  
-    function handleClick() {
-      if(selectMovie !== undefined){
-    selectMovie(movie.id);}
+  function handleClick() {
+    onClick(movie);
   }
-  
-  
 
   const rating = movie.vote_average;
-  const year: string[] = movie.release_date.split('-');
+  const year: string[] = movie.release_date.split("-");
 
   return (
     <div

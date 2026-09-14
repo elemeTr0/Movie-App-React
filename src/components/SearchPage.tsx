@@ -1,5 +1,6 @@
 import Card from "./Card";
 import Grainient from "./Grainient";
+import { useNavigate } from "react-router-dom";
 
 interface Movie {
   id: number;
@@ -14,6 +15,8 @@ interface Movie {
 interface SearchProps {
   allMovies: Movie[];
   search: string;
+  returnMovie: (movie: Movie) => void;
+  changeSource: (k:boolean) => void
 }
 
 function normalize(text: string) {
@@ -22,22 +25,40 @@ function normalize(text: string) {
     .replace(/[^a-z0-9]/g, "");
 }
 
-export default function SearchPage({ allMovies, search }: SearchProps) {
+export default function SearchPage({
+  allMovies,
+  search,
+  returnMovie,
+  changeSource
+}: SearchProps) {
+
   const filteredMovies = allMovies.filter((movie) =>
     normalize(movie.title).includes(normalize(search))
   );
 
-  return (
-  <div className="searchPage">
-    <div className="Grainient">
-      <Grainient />
-    </div>
+  const navigate = useNavigate();
 
-    <div className="searchCards">
-      {filteredMovies.map((movie) => (
-        <Card key={movie.id} movie={movie} />
-      ))}
+  function onClick(movie: Movie) {
+    changeSource(true)
+    returnMovie(movie);
+    navigate(`/movie/${movie.title}`);
+  }
+
+  return (
+    <div className="searchPage">
+      <div className="Grainient">
+        <Grainient />
+      </div>
+
+      <div className="searchCards">
+        {filteredMovies.map((movie) => (
+          <Card
+            key={movie.id}
+            movie={movie}
+            onClick={onClick}
+          />
+        ))}
+      </div>
     </div>
-  </div>
-);
+  );
 }

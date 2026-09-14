@@ -16,12 +16,16 @@ interface PageProps {
   movies: Movie[];
   selectMovie: (c:number) => void
   title: string
+  returnMovie?: (movie:Movie) => void
 }
 
 export default function Page({ movies, selectMovie, title }: PageProps) {
 
   const movieList = useRef<HTMLDivElement>(null);
 
+  function click(movie:Movie){
+    selectMovie(movie.id)
+  }
 
   return (
     <div className="movieSection">
@@ -41,7 +45,7 @@ export default function Page({ movies, selectMovie, title }: PageProps) {
     <Card
       key={movie.id}
       movie={movie}
-      selectMovie={selectMovie}
+      onClick={click}
     />
   ))}
 </div>

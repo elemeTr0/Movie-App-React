@@ -27,8 +27,8 @@ export default function Navbar({ searchMovie }: NavbarProps) {
     }
 
     return (
-        <div className="Navbar" style={{ position: "relative" }}>
-            <button onClick={handleHome}>Home</button>
+        <div className="Navbar">
+            <button onClick={handleHome}>HOME</button>
 
             <input
                 type="text"
